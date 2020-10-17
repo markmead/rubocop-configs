@@ -44,7 +44,13 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post.liked_by current_user
+    if current_user.voted_for? @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
+
+    render partial: "posts/like", locals: { post: @post }
   end
 
   private

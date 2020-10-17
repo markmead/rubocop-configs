@@ -873,7 +873,7 @@
   dependencies:
     spark-md5 "^3.0.0"
 
-"@rails/ujs@^6.0.0":
+"@rails/ujs@^6.0.0", "@rails/ujs@^6.0.2":
   version "6.0.3"
   resolved "https://registry.npmjs.org/@rails/ujs/-/ujs-6.0.3.tgz#e68a03278e30daea6a110aac5dfa33c60c53055d"
   integrity sha512-CM9OEvoN9eXkaX7PXEnbsQLULJ97b9rVmwliZbz/iBOERLJ68Rk3ClJe+fQEMKU4CBZfky2lIRnfslOdUs9SLQ==
@@ -4325,6 +4325,11 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.get@^4.0:
   version "4.4.2"
   resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -6980,6 +6985,15 @@ stdout-stream@^1.4.0:
   integrity sha512-j4emi03KXqJWcIeF8eIXkjMFN1Cmb8gUlDYGeBALLPo5qdyTfA9bOtl8m33lRoC+vFMkP3gl0WsDr6+gzxbbTA==
   dependencies:
     readable-stream "^2.0.1"
+
+stimulus-remote@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/stimulus-remote/-/stimulus-remote-2.0.0.tgz#af893dd5699b78d5c58efb984f1d45db7669c56f"
+  integrity sha512-vAVh8RG1MfzjWfVfilaSfVe8zxvbmLTJcDjp3aOYJzOuA+1nb7AgOFCz2zomEFxLsiHbWd3yHp1ggviSVYdh9A==
+  dependencies:
+    "@rails/ujs" "^6.0.2"
+    lodash.debounce "^4.0.8"
+    stimulus "^1.1.1"
 
 stimulus-reveal@^1.0.3:
   version "1.0.3"

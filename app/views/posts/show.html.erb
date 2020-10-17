@@ -4,30 +4,18 @@
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         <%= @post.title %>
       </h1>
-      <div class="inline-flex items-center">
-        <span class="text-sm font-semibold uppercase">
-          <%= @post.votes_for.size %> likes
-        </span>
-        <%= link_to like_post_path(@post), remote: true, method: :put, class: 'ml-3 inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold' do %>
-          <span class="text-xs">Like</span>
-          <span class="ml-3">❤️</span>
-        <% end %>
-      </div>
+      <%= render 'like', post: @post %>
     </div>
     <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
       <div class="relative p-6 mb-8 bg-gray-100 border-2 border-black rounded-lg lg:mb-0 lg:row-start-1 lg:col-start-2">
         <div class="relative mx-auto text-base prose max-w-prose lg:max-w-none">
           <p>
             <h4>Gem</h4>
-            <code class="px-2 py-1 bg-gray-200 rounded-md">
-              <%= @post.gem %>
-            </code>
+            <code class="px-2 py-1 bg-gray-200 rounded-md"><%= @post.gem %></code>
           </p>
           <p>
             <h4>Config</h4>
-            <pre class="overflow-y-scroll max-h-64">
-              <%= @post.config %>
-            </pre>
+            <pre class="overflow-y-scroll max-h-64"><%= @post.config %></pre>
           </p>
         </div>
       </div>
