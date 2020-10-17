@@ -12,6 +12,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "devise", "~> 4.7"
 gem "acts-as-taggable-on", "~> 6.0"
 gem "acts_as_votable"
+gem "active_link_to"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

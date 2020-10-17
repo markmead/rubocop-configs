@@ -1,23 +1,28 @@
-<article class="border-2 border-gray-200 rounded-lg divide-y-2 divide-gray-200 hover:border-black">
+<article class="border-2 border-gray-200 divide-y-2 divide-gray-200 rounded-lg hover:border-black">
   <%= link_to post, class: 'px-6 py-4 block' do %>
-    <h3 class="mt-2 text-2xl font-semibold">
+    <% unless post.live? %>
+      <span class="inline-flex items-center px-2 py-1 mb-2 text-xs font-medium text-gray-800 bg-orange-100 rounded-full">
+        not live
+      </span>
+    <% end %>
+    <h3 class="text-2xl font-semibold">
       <%= post.title %>
     </h3>
     <div class="prose max-w-none">
       <p>A strict formatter implementing best practies that the GOV UK Rails team use.</p>
     </div>
-    <span class="mt-4 inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold">
+    <span class="inline-flex items-center px-6 py-2 mt-4 font-semibold text-white uppercase bg-blue-700 rounded-md">
       <span class="text-xs">Take a look</span>
       <span class="ml-3">👉</span>
     </span>
   <% end %>
-  <div class="bg-gray-100 px-6 py-2 rounded-b-lg flex justify-between items-center">
+  <div class="flex items-center justify-between px-6 py-2 bg-gray-100 rounded-b-lg">
     <div class="flex items-center space-x-2">
       <% post.tags.each do |tag| %>
         <%= render 'components/tag', title: tag.name %>
       <% end %>
     </div>
-    <p class="text-sm text-gray-500 ml-3">
+    <p class="ml-3 text-sm text-gray-500">
       <%= post.user.email %>
     </p>
   </div>

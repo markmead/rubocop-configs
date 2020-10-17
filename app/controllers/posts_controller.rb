@@ -1,19 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :like]
 
   def index
     @posts = Post.live
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @post = Post.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @post = current_user.posts.build post_params
@@ -29,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update post_params
         format.html { redirect_to @post, notice: "Post was successfully updated." }
       else
         format.html { render :edit }
@@ -51,7 +50,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find params[:id]
   end
 
   def post_params

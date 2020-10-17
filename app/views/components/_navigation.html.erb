@@ -6,24 +6,18 @@
           <%= render 'components/logo' %>
         </div>
         <div class="hidden lg:ml-6 lg:flex">
-          <%= link_to 'Explore', root_path, class: 'inline-flex items-center py-2 px-4 bg-blue-700 text-white text-sm font-medium focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' %>
-          <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
-            Cops
-          </a>
-          <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
-            Liked
-          </a>
-          <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
-            Tags
-          </a>
+          <%= active_link_to 'Explore', root_path, class: 'navigation-link', active: :exclusive %>
+          <%= active_link_to 'My cops', my_cops_path, class: 'navigation-link', active: :exclusive %>
+          <%= active_link_to 'Liked', likes_path, class: 'navigation-link', active: :exclusive %>
+          <%= active_link_to 'Tags', tags_path, class: 'navigation-link' %>
         </div>
       </div>
       <div class="flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
         <div class="w-full max-w-lg lg:max-w-xs">
-          <label for="search" class="sr-only">Search</label>
+          <label for="search" class="sr-only">Search cops</label>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-xl pointer-events-none">🕵️‍♀️</div>
-            <input id="search" class="w-full pl-10 border-2 border-black form-input" placeholder="Search" type="search">
+            <input id="search" class="w-full pl-10 border-2 border-black form-input" placeholder="Search cops" type="search">
           </div>
         </div>
       </div>
@@ -37,16 +31,22 @@
           </svg>
         </button>
       </div>
-      <div class="hidden lg:ml-4 lg:flex lg:items-center">
+      <div class="hidden lg:ml-4 lg:flex lg:items-center" data-controller="reveal">
         <div class="relative flex-shrink-0">
           <div>
-            <button class="text-3xl" type="button">🙋‍♀️</button>
+            <button type="button" class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded" data-action="reveal#toggle">
+              <span class="text-2xl">🙋‍♀️</span>
+            </button>
           </div>
-          <div class="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-l lg:hidden">
-            <div class="py-1 bg-white rounded-md shadow-xs">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100" role="menuitem">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100" role="menuitem">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100" role="menuitem">Sign out</a>
+          <div class="absolute right-0 w-48 mt-2 origin-top-right shadow-l" hidden data-reveal>
+            <div class="py-1 bg-white border-2 border-gray-200 rounded-md">
+              <% if user_signed_in? %>
+                <%= link_to "Account", edit_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+              <% else %>
+                <%= link_to "Sign Up", new_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+                <%= link_to "Login", new_user_session_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+              <% end %>
             </div>
           </div>
         </div>

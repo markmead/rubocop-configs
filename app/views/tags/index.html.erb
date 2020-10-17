@@ -1,0 +1,32 @@
+<section class="py-12 bg-white sm:py-16 lg:py-20">
+  <div class="container">
+    <header>
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Tags
+      </h1>
+      <div class="mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-start">
+        <p class="text-xl text-gray-500">
+          Search and filter cops by tags
+        </p>
+        <form class="flex mt-6 lg:mt-0 lg:justify-end">
+          <div class="w-full max-w-lg">
+            <label for="search" class="sr-only">Search tags</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-xl pointer-events-none">🕵️‍♀️</div>
+              <input id="search" class="w-full pl-10 border-2 border-black form-input" placeholder="Search tags" type="search">
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+    <main class="flex flex-wrap pt-12 mt-6 -mx-2 -mb-2 border-t-2 border-gray-100">
+      <% @tags.each do |tag| %>
+        <div class="m-2">
+          <%= link_to tag_path(tag) do %>
+            <%= render 'components/tag', title: tag.name %>
+          <% end %>
+        </div>
+      <% end %>
+    </main>
+  </div>
+</section>

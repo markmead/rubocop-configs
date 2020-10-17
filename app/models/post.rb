@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   belongs_to :user
 
   scope :live, -> { where(live: true) }
+
+  def live?
+    live
+  end
 end
