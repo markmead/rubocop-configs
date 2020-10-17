@@ -1,0 +1,46 @@
+<div class="bg-white overflow-hidden relative">
+  <div class="container py-12 sm:py-16 lg:py-20">
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <%= @post.title %>
+      </h1>
+      <div class="inline-flex items-center">
+        <span class="text-sm font-semibold uppercase">
+          <%= @post.votes_for.size %> likes
+        </span>
+        <%= link_to like_post_path(@post), remote: true, method: :put, class: 'ml-3 inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold' do %>
+          <span class="text-xs">Like</span>
+          <span class="ml-3">❤️</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="lg:grid lg:grid-cols-2 lg:gap-8 mt-8 lg:items-start">
+      <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2 border-2 border-black bg-gray-100 rounded-lg p-6">
+        <div class="relative text-base mx-auto max-w-prose lg:max-w-none prose">
+          <p>
+            <h4>Gem</h4>
+            <code class="bg-gray-200 rounded-md px-2 py-1">
+              <%= @post.gem %>
+            </code>
+          </p>
+          <p>
+            <h4>Config</h4>
+            <pre class="max-h-64 overflow-y-scroll">
+              <%= @post.config %>
+            </pre>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <% @post.tags.each do |tag| %>
+            <%= render 'components/tag', title: tag.name %>
+          <% end %>
+        </div>
+        <div class="prose max-w-prose mx-auto lg:max-w-none mt-4">
+          <%#= @post.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
