@@ -69,7 +69,13 @@
               </div>
             </div>
 
-            <div class="p-6">
+            <div class="inline-flex items-center p-6 space-x-3">
+              <% if current_post %>
+                <%= link_to @post, method: :delete, class: 'inline-flex items-center px-6 py-2 bg-red-700 text-white rounded-md uppercase font-semibold' do %>
+                  <span class="text-xs">Delete</span>
+                  <span class="ml-3">😱</span>
+                <% end %>
+              <% end %>
               <%= form.button :submit, class: 'inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold' do %>
                 <span class="text-xs">Submit</span>
                 <span class="ml-3">🚢</span>

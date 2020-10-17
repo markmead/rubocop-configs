@@ -7,14 +7,10 @@ Rails.application.routes.draw do
     member do
       put "like"
     end
-
-    collection do
-      get "user"
-    end
   end
 
   resources :tags
 
   get "/likes", to: "user_likes#index"
-  get "/my-cops", to: "user_posts#index"
+  get "/my-cops", to: "user_posts#index", as: "user_posts"
 end
