@@ -1,4 +1,4 @@
-<div class="bg-white overflow-hidden relative">
+<div class="relative overflow-hidden bg-white">
   <div class="container py-12 sm:py-16 lg:py-20">
     <div class="flex items-center justify-between">
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -14,18 +14,18 @@
         <% end %>
       </div>
     </div>
-    <div class="lg:grid lg:grid-cols-2 lg:gap-8 mt-8 lg:items-start">
-      <div class="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2 border-2 border-black bg-gray-100 rounded-lg p-6">
-        <div class="relative text-base mx-auto max-w-prose lg:max-w-none prose">
+    <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
+      <div class="relative p-6 mb-8 bg-gray-100 border-2 border-black rounded-lg lg:mb-0 lg:row-start-1 lg:col-start-2">
+        <div class="relative mx-auto text-base prose max-w-prose lg:max-w-none">
           <p>
             <h4>Gem</h4>
-            <code class="bg-gray-200 rounded-md px-2 py-1">
+            <code class="px-2 py-1 bg-gray-200 rounded-md">
               <%= @post.gem %>
             </code>
           </p>
           <p>
             <h4>Config</h4>
-            <pre class="max-h-64 overflow-y-scroll">
+            <pre class="overflow-y-scroll max-h-64">
               <%= @post.config %>
             </pre>
           </p>
@@ -37,8 +37,8 @@
             <%= render 'components/tag', title: tag.name %>
           <% end %>
         </div>
-        <div class="prose max-w-prose mx-auto lg:max-w-none mt-4">
-          <%#= @post.description %>
+        <div class="mx-auto mt-4 prose max-w-prose lg:max-w-none">
+          <%= @post.description %>
         </div>
       </div>
     </div>

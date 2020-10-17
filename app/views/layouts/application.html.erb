@@ -15,5 +15,12 @@
       <%= yield %>
     </main>
     <%= render 'components/footer' %>
+
+    <div data-controller="reveal">
+      <%= render 'components/toggle_side_form_button' %>
+
+      <div class="fixed inset-0 z-50 bg-black bg-opacity-25" data-action="click->reveal#toggle" hidden data-reveal></div>
+      <%= render 'components/side_form' unless devise_controller? || current_user.nil? %>
+    </div>
   </body>
 </html>
