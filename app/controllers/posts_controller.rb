@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.live
+
+    @posts = @posts.search(params[:search]) if params[:search]
   end
 
   def show; end

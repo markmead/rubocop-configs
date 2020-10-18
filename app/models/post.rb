@@ -8,6 +8,8 @@ class Post < ApplicationRecord
 
   scope :live, -> { where(live: true) }
 
+  scope :search, ->(search) { select { |post| post.title.downcase.include?(search.downcase) } }
+
   def live?
     live
   end
