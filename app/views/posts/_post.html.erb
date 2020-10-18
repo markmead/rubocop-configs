@@ -19,7 +19,9 @@
   <div class="flex items-center justify-between px-6 py-2 bg-gray-100 rounded-b-lg">
     <div class="flex items-center space-x-2">
       <% post.tags.each do |tag| %>
-        <%= render 'components/tag', title: tag.name %>
+        <%= link_to tag_path(tag) do %>
+          <%= render 'components/tag', title: tag.name %>
+        <% end %>
       <% end %>
     </div>
     <p class="ml-3 text-sm text-gray-500">

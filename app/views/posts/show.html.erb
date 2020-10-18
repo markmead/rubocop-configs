@@ -22,7 +22,9 @@
       <div>
         <div class="flex items-center space-x-2">
           <% @post.tags.each do |tag| %>
-            <%= render 'components/tag', title: tag.name %>
+            <%= link_to tag_path(tag) do %>
+              <%= render 'components/tag', title: tag.name %>
+            <% end %>
           <% end %>
         </div>
         <div class="mx-auto mt-4 prose max-w-prose lg:max-w-none">
