@@ -1,5 +1,5 @@
 <% tags.each do |tag| %>
-  <% not_searched = tag.name.downcase.exclude?(params[:search].downcase) if params[:search].present? %>
+  <% not_searched = tag.name.exclude?(params[:search].downcase) if params[:search].present? %>
 
   <div class="m-2 <%= 'order-last opacity-50' if not_searched %>">
     <%= link_to tag_path(tag) do %>
