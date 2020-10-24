@@ -13,6 +13,7 @@ gem "devise", "~> 4.7"
 gem "acts-as-taggable-on", "~> 6.0"
 gem "acts_as_votable"
 gem "active_link_to"
+gem 'friendly_id', '~> 5.4.0'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

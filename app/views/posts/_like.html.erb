@@ -1,18 +1,22 @@
 <%
+  if current_user.present?
   text = current_user.voted_for?(post) ? 'Unlike' : 'Like'
   icon = current_user.voted_for?(post) ? '💔' : '💖'
+  end
 %>
 
 <div class="inline-flex items-center" data-controller="remote">
   <span class="text-sm font-semibold uppercase">
     <%= post.votes_for.size %> likes
   </span>
-  <%= link_to like_post_path(post), remote: true, method: :put, class: 'ml-3 inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold', data: { action: 'ajax:success->remote#replace' } do %>
-    <span class="text-xs">
-      <%= text %>
-    </span>
-    <span class="ml-3">
-      <%= icon %>
-    </span>
+  <% if current_user.present? %>
+    <%= link_to like_post_path(post), remote: true, method: :put, class: 'ml-3 inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold', data: { action: 'ajax:success->remote#replace' } do %>
+      <span class="text-xs">
+        <%= text %>
+      </span>
+      <span class="ml-3">
+        <%= icon %>
+      </span>
+    <% end %>
   <% end %>
 </div>
