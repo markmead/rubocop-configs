@@ -1,12 +1,18 @@
+<% set_meta_tags title: @post.title,
+                 description: truncate(strip_tags(@post.description.to_s), length: 140),
+                 og: { title: @post.title } %>
+
 <div class="relative overflow-hidden bg-white">
   <div class="container py-12 sm:py-16 lg:py-20">
-    <div class="flex items-center justify-between">
+    <div class="md:flex md:items-center md:justify-between">
       <div class="max-w-xl">
         <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
           <%= @post.title %>
         </h1>
       </div>
-      <%= render 'like', post: @post %>
+      <div class="mt-3 md:ml-3 md:mt-0">
+        <%= render 'like', post: @post %>
+      </div>
     </div>
     <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
       <div class="relative p-6 mb-8 bg-gray-100 border-2 border-black rounded-lg lg:mb-0 lg:row-start-1 lg:col-start-2">

@@ -8,15 +8,17 @@
     <h3 class="text-2xl font-semibold">
       <%= post.title %>
     </h3>
-    <div class="max-w-lg mt-1 text-base prose">
-      <p>A strict formatter implementing best practies that the GOV UK Rails team use.</p>
-    </div>
+    <% if post.description %>
+      <div class="max-w-lg mt-1 text-base prose">
+        <%== post.description %>
+      </div>
+    <% end %>
     <span class="inline-flex items-center px-6 py-2 mt-4 font-semibold text-white uppercase bg-blue-700 rounded-md">
       <span class="text-xs">Take a look</span>
       <span class="ml-3">👉</span>
     </span>
   <% end %>
-  <div class="flex items-center justify-between px-6 py-2 bg-gray-100 rounded-b-lg">
+  <div class="px-6 py-2 bg-gray-100 rounded-b-lg md:flex md:items-center md:justify-between">
     <div class="flex items-center space-x-2">
       <% post.tags.each do |tag| %>
         <%= link_to tag_path(tag) do %>
@@ -24,7 +26,7 @@
         <% end %>
       <% end %>
     </div>
-    <p class="ml-3 text-sm text-gray-500">
+    <p class="mt-3 text-sm text-gray-600 md:ml-3 md:mt-0">
       <%= post.user.email %>
     </p>
   </div>

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :title, use: %i[slugged finders]
 
   acts_as_ordered_taggable_on :tags
   acts_as_votable
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
     live
   end
 
-  private
+private
 
   def tag_list_count
     errors[:tag_list] << "is too short (minimum is 1 tag)" if tag_list.count < 1

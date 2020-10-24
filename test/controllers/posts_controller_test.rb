@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,7 +16,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create post" do
-    assert_difference('Post.count') do
+    assert_difference("Post.count") do
       post posts_url, params: { post: { config: @post.config, gem: @post.gem, live: @post.live, title: @post.title } }
     end
 
@@ -39,7 +39,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy post" do
-    assert_difference('Post.count', -1) do
+    assert_difference("Post.count", -1) do
       delete post_url(@post)
     end
 

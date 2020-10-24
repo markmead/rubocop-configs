@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :like]
+  before_action :set_post, only: %i[show edit update destroy like]
+  before_action :authenticate_user!, only: %i[new edit create update destroy like]
 
   def index
     @posts = Post.live
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "Post was successfully created."
     else
-      render partial: 'form', status: :unprocessable_entity, locals: { model: @post, title: "New post" }
+      render partial: "form", status: :unprocessable_entity, locals: { model: @post, title: "New post" }
     end
   end
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     if @post.update post_params
       redirect_to @post, notice: "Post was successfully updated."
     else
-      render partial: 'form', status: :unprocessable_entity, locals: { model: @post, title: "Edit #{@post.title}" }
+      render partial: "form", status: :unprocessable_entity, locals: { model: @post, title: "Edit #{@post.title}" }
     end
   end
 
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     render partial: "posts/like", locals: { post: @post }
   end
 
-  private
+private
 
   def set_post
     @post = Post.find params[:id]

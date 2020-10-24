@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Rubocoppers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= display_meta_tags charset: 'UTF-8',
+                          site: 'Rubocop Configs',
+                          reverse: true,
+                          canonical: request.url,
+                          viewport: 'width=device-width, initial-scale=1.0',
+                          index: true,
+                          # icon: asset_pack_url('media/images/favicon.png'), type: 'image/png',
+                          og: {
+                            type: 'website',
+                            url: root_url,
+                            # image: asset_pack_url('media/images/facebook-image.jpg')
+                          } %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -15,7 +27,6 @@
       <%= yield %>
     </main>
     <%= render 'components/footer' %>
-
     <%= render 'components/flash' %>
 
     <% unless devise_controller? || current_user.nil? %>

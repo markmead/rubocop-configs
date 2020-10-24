@@ -1,17 +1,18 @@
 <nav class="sticky inset-x-0 top-0 z-50 bg-white border-b-2 border-black">
   <div class="container">
     <div class="flex justify-between h-16">
-      <div class="flex px-2 lg:px-0">
+      <div class="flex">
         <div class="flex items-center flex-shrink-0">
           <%= render 'components/logo' %>
         </div>
         <div class="hidden lg:ml-6 lg:flex">
           <%= active_link_to 'Explore', root_path, class: 'navigation-link', active: :exclusive %>
-          <%= active_link_to 'My cops', user_posts_path, class: 'navigation-link', active: :exclusive %>
+          <%= active_link_to 'Shared', user_posts_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'Liked', user_likes_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'Tags', tags_path, class: 'navigation-link' %>
         </div>
       </div>
+
       <%= form_with url: root_path, method: :get, local: true, class: 'flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end' do |f| %>
         <div class="w-full max-w-lg lg:max-w-xs">
           <%= f.label :search, 'Search posts', class: 'sr-only' %>
@@ -21,24 +22,37 @@
           </div>
         </div>
       <% end %>
-      <div class="flex items-center lg:hidden">
-        <button class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500" aria-label="Main menu" aria-expanded="false">
-          <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+
+      <div class="relative flex items-center lg:hidden" data-controller="reveal">
+        <button type="button" class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded" data-action="reveal#toggle" aria-label="Open menu">
+          <span class="text-2xl">🙋‍♀️</span>
         </button>
+
+        <div class="absolute top-0 right-0 z-10 w-48 mt-16 origin-top-right" hidden data-reveal>
+          <div class="py-1 bg-white border-2 border-gray-200 rounded-md">
+            <%= link_to "Explore", root_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <%= link_to "Shared", user_posts_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <%= link_to "Liked", user_likes_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <%= link_to "Tags", tags_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <% if user_signed_in? %>
+              <%= link_to "Account", edit_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <% else %>
+              <%= link_to "Sign Up", new_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+              <%= link_to "Login", new_user_session_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <% end %>
+          </div>
+        </div>
       </div>
+      
       <div class="hidden lg:ml-3 lg:flex lg:items-center" data-controller="reveal">
         <div class="relative flex-shrink-0">
           <div>
-            <button type="button" class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded" data-action="reveal#toggle">
+            <button type="button" class="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded" data-action="reveal#toggle" aria-label="Open menu">
               <span class="text-2xl">🙋‍♀️</span>
             </button>
           </div>
-          <div class="absolute right-0 w-48 mt-2 origin-top-right shadow-l" hidden data-reveal>
+          <div class="absolute right-0 z-10 w-48 mt-2 origin-top-right" hidden data-reveal>
             <div class="py-1 bg-white border-2 border-gray-200 rounded-md">
               <% if user_signed_in? %>
                 <%= link_to "Account", edit_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
@@ -53,29 +67,3 @@
       </div>
     </div>
   </div>
-
-  <div class="hidden lg:hidden">
-    <div class="pt-2 pb-3">
-      <a href="#" class="block py-2 pl-3 pr-4 text-base font-medium text-indigo-700 transition duration-150 ease-in-out border-l-4 border-indigo-500 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700">Explore</a>
-      <a href="#" class="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300">Team</a>
-      <a href="#" class="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300">Projects</a>
-      <a href="#" class="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300">Calendar</a>
-    </div>
-    <div class="pt-4 pb-3 border-t border-gray-200">
-      <div class="flex items-center px-4">
-        <div class="flex-shrink-0">
-          <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        </div>
-        <div class="ml-3">
-          <div class="text-base font-medium text-gray-800">Tom Cook</div>
-          <div class="text-sm font-medium text-gray-500">tom@example.com</div>
-        </div>
-      </div>
-      <div class="mt-3">
-        <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100">Your Profile</a>
-        <a href="#" class="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100">Settings</a>
-        <a href="#" class="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100">Sign out</a>
-      </div>
-    </div>
-  </div>
-</nav>
