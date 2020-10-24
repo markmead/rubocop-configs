@@ -1,9 +1,11 @@
 <div class="relative overflow-hidden bg-white">
   <div class="container py-12 sm:py-16 lg:py-20">
     <div class="flex items-center justify-between">
-      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-        <%= @post.title %>
-      </h1>
+      <div class="max-w-xl">
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <%= @post.title %>
+        </h1>
+      </div>
       <%= render 'like', post: @post %>
     </div>
     <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">

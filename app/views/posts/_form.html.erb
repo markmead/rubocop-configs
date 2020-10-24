@@ -1,6 +1,6 @@
 <%= form_with model: model, class: 'divide-y divide-gray-200', data: { controller: 'remote', action: 'ajax:error->remote#replace' } do |form| %>
   <div class="p-6 space-y-6">
-    <%= render 'components/form_errors', model: @post if @post.present? && @post.errors.any? %>
+    <%= render 'components/form_errors', model: @post %>
     
     <div class="space-y-1">
       <%= form.label :title, class: 'block text-sm font-medium' %>

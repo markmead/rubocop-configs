@@ -16,6 +16,8 @@
     </main>
     <%= render 'components/footer' %>
 
+    <%= render 'components/flash' %>
+
     <% unless devise_controller? || current_user.nil? %>
       <% unless @post.present? && @post.user != current_user %>
         <div data-controller="reveal">
