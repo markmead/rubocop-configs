@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :tags
 
-  get "/likes", to: "user_likes#index"
-  get "/my-cops", to: "user_posts#index", as: "user_posts"
+  scope module: :user do
+    get "/likes", to: "likes#index", as: "user_likes"
+    get "/my-cops", to: "posts#index", as: "user_posts"
+  end
 end

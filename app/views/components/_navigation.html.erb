@@ -8,7 +8,7 @@
         <div class="hidden lg:ml-6 lg:flex">
           <%= active_link_to 'Explore', root_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'My cops', user_posts_path, class: 'navigation-link', active: :exclusive %>
-          <%= active_link_to 'Liked', likes_path, class: 'navigation-link', active: :exclusive %>
+          <%= active_link_to 'Liked', user_likes_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'Tags', tags_path, class: 'navigation-link' %>
         </div>
       </div>
