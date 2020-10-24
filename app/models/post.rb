@@ -23,6 +23,7 @@ class Post < ApplicationRecord
   private
 
   def tag_list_count
-    errors[:tag_list] << "4 tags maximum" if tag_list.count > 4
+    errors[:tag_list] << "is too short (minimum is 1 tag)" if tag_list.count < 1
+    errors[:tag_list] << "is too long (maximum is 4 tags)" if tag_list.count > 4
   end
 end

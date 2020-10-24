@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.live
-
     @posts = @posts.search(params[:search]) if params[:search]
   end
 
@@ -19,22 +18,18 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build post_params
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
-      else
-        format.html { render :new }
-      end
+    if @post.save
+      redirect_to @post, notice: "Post was successfully created."
+    else
+      render partial: 'form', status: :unprocessable_entity, locals: { model: @post, title: "New post" }
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update post_params
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
-      else
-        format.html { render :edit }
-      end
+    if @post.update post_params
+      redirect_to @post, notice: "Post was successfully updated."
+    else
+      render partial: 'form', status: :unprocessable_entity, locals: { model: @post, title: "Edit #{@post.title}" }
     end
   end
 

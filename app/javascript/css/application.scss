@@ -21,3 +21,11 @@ button {
     @apply bg-blue-700 text-white;
   }
 }
+
+.field_with_errors {
+  input,
+  textarea,
+  trix-edito {
+    @apply border-red-500;
+  }
+}

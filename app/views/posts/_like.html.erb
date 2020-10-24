@@ -1,7 +1,7 @@
 <%
   if current_user.present?
-  text = current_user.voted_for?(post) ? 'Unlike' : 'Like'
-  icon = current_user.voted_for?(post) ? '💔' : '💖'
+    text = current_user.voted_for?(post) ? 'Unlike' : 'Like'
+    icon = current_user.voted_for?(post) ? '💔' : '💖'
   end
 %>
 

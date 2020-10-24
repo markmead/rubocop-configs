@@ -1,6 +1,6 @@
 <%
-  title = current_post ? "Edit #{@post.title}" : 'New post'
-  model = current_post ? @post : Post.new
+  title = @post.present? ? "Edit #{@post.title}" : 'New post'
+  model = @post.present? ? @post : Post.new
 %>
 
 <aside 
@@ -31,57 +31,12 @@
           </div>
           <div>
             <p class="text-sm text-blue-300">
-              Get started by filling in the information below to create your new post.
+              Get started by filling in the information about the post.
             </p>
           </div>
         </header>
         <div class="flex flex-col justify-between flex-1">
-          <%= form_with model: model, local: true, class: 'divide-y divide-gray-200' do |form| %>
-            <div class="p-6 space-y-6">
-              <div class="space-y-1">
-                <%= form.label :title, class: 'block text-sm font-medium' %>
-                <%= form.text_field :title, class: 'form-input border-2 border-gray-200 hover:border-black w-full' %>
-              </div>
-
-              <div class="space-y-1">
-                <%= form.label :gem, class: 'block text-sm font-medium' %>
-                <%= form.text_field :gem, class: 'form-input border-2 border-gray-200 hover:border-black w-full' %>
-              </div>
-
-              <div class="space-y-1" data-controller="tabarea">
-                <%= form.label :config, class: 'block text-sm font-medium' %>
-                <%= form.text_area :config, class: 'form-input border-2 border-gray-200 hover:border-black w-full', data: { target: 'tabarea.input', action: 'keydown->tabarea#tab' } %>
-              </div>
-
-              <div class="space-y-1">
-                <%= form.label :description, class: 'block text-sm font-medium' %>
-                <%= form.rich_text_area :description, class: 'form-input border-2 border-gray-200 hover:border-black w-full' %>
-              </div>
-
-              <div class="space-y-1">
-                <%= form.label :tag_list, class: 'block text-sm font-medium' %>
-                <%= form.text_area :tag_list, class: 'form-input border-2 border-gray-200 hover:border-black w-full' %>
-              </div>
-
-              <div class="inline-flex items-center">
-                <%= form.check_box :live, class: 'form-checkbox border-2 border-gray-200 hover:border-black' %>
-                <%= form.label :live, class: 'block text-sm font-medium ml-3' %>
-              </div>
-            </div>
-
-            <div class="inline-flex items-center p-6 space-x-3">
-              <% if current_post %>
-                <%= link_to @post, method: :delete, class: 'inline-flex items-center px-6 py-2 bg-red-700 text-white rounded-md uppercase font-semibold' do %>
-                  <span class="text-xs">Delete</span>
-                  <span class="ml-3">😱</span>
-                <% end %>
-              <% end %>
-              <%= form.button :submit, class: 'inline-flex items-center px-6 py-2 bg-blue-700 text-white rounded-md uppercase font-semibold' do %>
-                <span class="text-xs">Submit</span>
-                <span class="ml-3">🚢</span>
-              <% end %>
-            </div>
-          <% end %>
+          <%= render 'posts/form', model: model, title: title %>
         </div>
       </div>
     </div>
