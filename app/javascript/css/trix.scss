@@ -1,1 +1,8 @@
 @import 'trix/dist/trix';
+
+trix-toolbar {
+  .trix-button--icon-heading-1,
+  .trix-button-group--file-tools {
+    display: none;
+  }
+}

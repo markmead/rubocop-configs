@@ -5,4 +5,7 @@ require('channels')
 require('css/application.scss')
 require('trix')
 require('@rails/actiontext')
+
 import 'controllers'
+
+document.addEventListener('trix-file-accept', (event) => event.preventDefault())
