@@ -16,17 +16,39 @@
     </div>
     <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
       <div class="relative p-6 mb-8 bg-gray-100 border-2 border-black rounded-lg lg:mb-0 lg:row-start-1 lg:col-start-2">
-        <div class="relative mx-auto text-base prose max-w-prose lg:max-w-none">
-          <p>
-            <h4>Gem</h4>
-            <code class="px-2 py-1 bg-gray-200 rounded-md"><%= @post.gem %></code>
-          </p>
-          <p>
-            <h4>Config</h4>
+        <div data-controller="clipboard">
+          <div class="flex items-center">
+            <h4 class="font-semibold">Gem</h4>
+            <button type="button" 
+                    data-action="clipboard#copy" 
+                    class="px-2 py-1 ml-1.5 hover:bg-gray-200 font-semibold text-xs bg-gray-300 rounded">
+              Copy
+            </button>
+          </div>
+          <div class="mt-2 prose">
+            <code class="px-2 py-1 bg-gray-200 rounded-md">
+              <%= @post.gem %>
+            </code>
+          </div>
+          <input type="text" value="<%= @post.gem %>" class="sr-only" data-target="clipboard.source">
+        </div>
+        
+        <div class="mt-6" data-controller="clipboard">
+          <div class="flex items-center">
+            <h4 class="font-semibold">Config</h4>
+            <button type="button" 
+                    data-action="clipboard#copy" 
+                    class="px-2 py-1 ml-1.5 hover:bg-gray-200 font-semibold text-xs bg-gray-300 rounded">
+              Copy
+            </button>
+          </div>
+          <div class="mt-2 prose">
             <pre class="overflow-y-scroll max-h-64"><%= @post.config %></pre>
-          </p>
+          </div>
+          <input type="text" value="<%= @post.config %>" class="sr-only" data-target="clipboard.source">
         </div>
       </div>
+      
       <div>
         <div class="flex items-center space-x-2">
           <% @post.tags.each do |tag| %>
