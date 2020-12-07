@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :tags
 
+  get '/references', to: 'pages#references'
   get '/leaderboard', to: 'leaderboard#index'
 
   scope module: :user do
