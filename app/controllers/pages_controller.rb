@@ -1,4 +1,3 @@
 class PagesController < ApplicationController
-  def references
-  end
+  def references; end
 end
