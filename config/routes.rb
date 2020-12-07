@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :tags
 
+  get '/leaderboard', to: 'leaderboard#index'
+
   scope module: :user do
     get "/likes", to: "likes#index", as: "user_likes"
     get "/my-cops", to: "posts#index", as: "user_posts"

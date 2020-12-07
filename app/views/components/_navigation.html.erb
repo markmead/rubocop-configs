@@ -10,6 +10,7 @@
           <%= active_link_to 'Shared', user_posts_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'Liked', user_likes_path, class: 'navigation-link', active: :exclusive %>
           <%= active_link_to 'Tags', tags_path, class: 'navigation-link' %>
+          <%= active_link_to 'Leaderboard', leaderboard_path, class: 'navigation-link' %>
         </div>
       </div>
 
@@ -34,6 +35,7 @@
             <%= link_to "Shared", user_posts_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
             <%= link_to "Liked", user_likes_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
             <%= link_to "Tags", tags_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
+            <%= link_to "Leaderboard", leaderboard_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
             <% if user_signed_in? %>
               <%= link_to "Account", edit_user_registration_path, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'block hover:bg-blue-100 hover:text-blue-700 m-2 px-4 py-2 text-sm font-medium text-gray-500 rounded-md' %>

@@ -1,0 +1,18 @@
+<% set_meta_tags title: 'User Leaderboard',
+                 description: 'See who shares the most configs on the leaderboard',
+                 og: { title: 'User Leaderboard' } %>
+
+<section class="py-12 bg-white sm:py-16 lg:py-20">
+  <div class="container">
+    <header>
+      <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        User Leaderboard
+      </h1>
+    </header>
+    <main class="pt-12 mt-6 space-y-2 border-t-2 border-gray-100">
+      <% @users.each_with_index do |user, index| %>
+        <%= render 'components/user', user: user, index: index %>
+      <% end %>
+    </main>
+  </div>
+</section>
