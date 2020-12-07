@@ -9,8 +9,10 @@
       <%= post.title %>
     </h3>
     <% if post.description %>
-      <div class="max-w-lg mt-1 text-base prose">
-        <%== post.description %>
+      <div class="max-w-lg mt-1 prose">
+        <p>
+          <%= truncate(strip_tags(@post.description.to_s), length: 200) %>
+        </p>
       </div>
     <% end %>
     <span class="inline-flex items-center px-6 py-2 mt-4 font-semibold text-white uppercase bg-blue-700 rounded-md">
