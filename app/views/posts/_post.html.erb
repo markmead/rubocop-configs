@@ -11,7 +11,7 @@
     <% if post.description %>
       <div class="max-w-lg mt-1 prose">
         <p>
-          <%= truncate(strip_tags(@post.description.to_s), length: 200) %>
+          <%= truncate(strip_tags(post.description.to_s), length: 200) %>
         </p>
       </div>
     <% end %>
