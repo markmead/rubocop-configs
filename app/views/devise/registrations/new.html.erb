@@ -16,6 +16,11 @@
         </div>
 
         <div>
+          <%= f.label :username, class: 'block text-sm font-medium text-gray-700 mb-1' %>
+          <%= f.text_field :username, class: 'form-input w-full' %>
+        </div>
+
+        <div>
           <%= f.label :password, class: 'block text-sm font-medium text-gray-700 mb-1' %>
           <%= f.password_field :password, autocomplete: "new-password", class: 'form-input w-full' %>
           <% if @minimum_password_length %>

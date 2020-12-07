@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true, uniqueness: true
+  validates :gem, :config, :description, presence: true
   validate :tag_list_count
 
   scope :live, -> { where(live: true) }
@@ -18,6 +19,10 @@ class Post < ApplicationRecord
 
   def live?
     live
+  end
+
+  def username
+    user.username
   end
 
 private
